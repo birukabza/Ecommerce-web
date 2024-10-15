@@ -32,7 +32,7 @@ To run this project locally, follow these steps:
 4. Run the application:
     npm run dev
 
-Open your browser and go to http://localhost:3000 to view the application.
+Open your browser and go to http://localhost:5173 to view the application.
 
 Usage
 Sign Up / Sign In: Users can create an account or log in using Google or their email and password.
