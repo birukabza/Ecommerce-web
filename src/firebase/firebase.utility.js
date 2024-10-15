@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc, Timestamp } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCKZnoqeM9zWuAvarAR-AMK2cVFnRredno",
@@ -25,7 +25,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     
     if (!snapShot.exists()) {
         const { displayName, email } = userAuth;
-        const createdAt = new Date();
+        const createdAt = Timestamp.fromDate(new Date()); ;
 
         try {
             await setDoc(userRef,{

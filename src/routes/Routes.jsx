@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import HomePage from "../pages/homepage/HomePage"
 import Layout from "../Components/layout/Layout"
 import ShopPage from "../pages/shop/ShopPage"
@@ -8,7 +8,7 @@ const createRouter = (currentUser) =>
   createBrowserRouter([
     {
       path: '/',
-      element: <Layout currentUser={currentUser} />,  
+      element: <Layout/>,  
       children: [
         {
           path: '/',
@@ -20,7 +20,7 @@ const createRouter = (currentUser) =>
         },
         {
           path: '/signin',
-          element: <SignInSignUpPage />,
+           element:  currentUser ? <Navigate to="/"/> : <SignInSignUpPage />,
         },
       ],
     },

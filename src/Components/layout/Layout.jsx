@@ -1,9 +1,9 @@
 import Header from '../header/Header'
 import { Outlet } from 'react-router-dom'
 
-const Layout = ({currentUser}) => (
+const Layout = () => (
     <>
-    <Header currentUser = {currentUser}/> 
+    <Header /> 
     <Outlet />  
     </>
 )

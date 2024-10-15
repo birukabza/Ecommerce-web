@@ -2,7 +2,11 @@
 import { RouterProvider } from "react-router-dom";
 
 // Hooks
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentUser } from "./redux/reducers/user.reducer";
 
 // css
 import "./App.scss";
@@ -17,7 +21,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { onSnapshot } from "firebase/firestore";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.user.currentUser)
 
   useEffect(() => {
     const unsubscribeFromAuth = onAuthStateChanged(auth, async (userAuth) => {
@@ -25,16 +30,25 @@ function App() {
         const userRef = await createUserProfileDocument(userAuth);
 
         const unsubscribeFromSnapshot = onSnapshot(userRef, (snapshot) => {
-          setCurrentUser({
-            uid: snapshot.id,
-            ...snapshot.data(),
-          });
+          const userData = snapshot.data();
+
+          // Convert createdAt date to a serializable format (if it's still a Date object) for redux
+          if (userData.createdAt) {
+
+              userData.createdAt = userData.createdAt.toDate().toISOString()
+          }
+          dispatch(
+            setCurrentUser({
+              uid: snapshot.id,
+              ...userData,
+            })
+          )
         });
 
         // Clean up the snapshot listener when the component is unmounted or when auth changes
         return () => unsubscribeFromSnapshot();
       } else {
-        setCurrentUser(null);
+        dispatch(setCurrentUser(null));
       }
     });
 
