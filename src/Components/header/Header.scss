@@ -3,11 +3,11 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 45px;
 
   .logo-container {
     height: 100%;
-    width: 70px;
+    max-width: 50%;
     padding: 20px;
     padding-top: 5px;
   }

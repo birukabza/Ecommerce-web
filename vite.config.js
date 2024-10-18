@@ -4,12 +4,20 @@ import svgr from 'vite-plugin-svgr'
 
 
 export default defineConfig({
-  plugins: [react(), svgr()],
+  plugins: [
+    react(),
+    svgr({
+      svgrOptions: {
+        icon: true, 
+        jsxRuntime: 'automatic',
+      },
+    }),
+  ],
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler'
-      }
-    }
-  }
-})
+        api: 'modern-compiler',
+      },
+    },
+  },
+});

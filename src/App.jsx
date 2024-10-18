@@ -6,7 +6,8 @@ import { useEffect } from "react";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentUser } from "./redux/reducers/user.reducer";
+import { selectCurrentUser } from "./redux/user/userSelector";
+import { setCurrentUser } from "./redux/user/userSlice";
 
 // css
 import "./App.scss";
@@ -22,7 +23,7 @@ import { onSnapshot } from "firebase/firestore";
 
 function App() {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.user.currentUser)
+  const currentUser = useSelector(selectCurrentUser)
 
   useEffect(() => {
     const unsubscribeFromAuth = onAuthStateChanged(auth, async (userAuth) => {

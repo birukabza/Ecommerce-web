@@ -3,6 +3,7 @@ import HomePage from "../pages/homepage/HomePage"
 import Layout from "../Components/layout/Layout"
 import ShopPage from "../pages/shop/ShopPage"
 import SignInSignUpPage from "../pages/sign-in-sign-up-page/SignInSignUpPage"
+import Checkout from '../pages/checkout/Checkout';
 
 const createRouter = (currentUser) =>
   createBrowserRouter([
@@ -21,6 +22,10 @@ const createRouter = (currentUser) =>
         {
           path: '/signin',
            element:  currentUser ? <Navigate to="/"/> : <SignInSignUpPage />,
+        },
+        {
+          path: '/checkout',
+          element: <Checkout/>
         },
       ],
     },

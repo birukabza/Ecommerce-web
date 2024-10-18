@@ -1,15 +1,30 @@
-// Header.jsx
 import './Header.scss';
 
-import { Logo } from '../../assets/Logo';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import CartIcon from '../cart-icon/CartIcon';
+import CartDropdown from '../cart-dropdown/CartDropdown';
+
 import { auth } from '../../firebase/firebase.utility';
-import {clearCurrentUser} from '../../redux/reducers/user.reducer'
+
+import LogoSvg from '../../assets/LogoSvg';
+
+import { Link } from 'react-router-dom';
+
+import { useSelector, useDispatch } from 'react-redux';
+import {clearCurrentUser} from '../../redux/user/userSlice'
+import { selectCurrentUser } from '../../redux/user/userSelector';
+
+import { useState } from 'react';
+
+
 
 const Header = () => {
-    const currentUser = useSelector((state) => state.user.currentUser);
+    const currentUser = useSelector(selectCurrentUser);
     const dispatch = useDispatch();
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    const toggleCartDropdown = () => {
+        setShowDropdown(prevShowDropdown => !prevShowDropdown)
+    }
 
     const handleSignOut = () => {
         auth.signOut()
@@ -22,7 +37,7 @@ const Header = () => {
     return (
         <div className="header">
             <Link className="logo-container" to="./">
-                <Logo className="logo" />
+                <LogoSvg className="logo" width="150px" height="110px"/>
             </Link>
             <div className="options">
                 <Link className="option" to="/shop">Shop</Link>
@@ -34,7 +49,10 @@ const Header = () => {
                 ) : (
                     <Link className="option" to="./signin">Sign In</Link>
                 )}
+                <CartIcon handleClick={toggleCartDropdown}/>
             </div>
+            { showDropdown && <CartDropdown/> }
+
         </div>
     );
 };
