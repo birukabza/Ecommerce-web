@@ -12,18 +12,19 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {clearCurrentUser} from '../../redux/user/userSlice'
 import { selectCurrentUser } from '../../redux/user/userSelector';
+import { showDropdown } from '../../redux/cart/cartSlice'; 
+import { selectShowDropDown } from '../../redux/cart/cartSelectors';
 
-import { useState } from 'react';
 
 
 
 const Header = () => {
     const currentUser = useSelector(selectCurrentUser);
+    const showCart = useSelector(selectShowDropDown)
     const dispatch = useDispatch();
-    const [showDropdown, setShowDropdown] = useState(false);
 
     const toggleCartDropdown = () => {
-        setShowDropdown(prevShowDropdown => !prevShowDropdown)
+        dispatch(showDropdown())
     }
 
     const handleSignOut = () => {
@@ -51,7 +52,7 @@ const Header = () => {
                 )}
                 <CartIcon handleClick={toggleCartDropdown}/>
             </div>
-            { showDropdown && <CartDropdown/> }
+            { showCart && <CartDropdown/> }
 
         </div>
     );
