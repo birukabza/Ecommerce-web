@@ -1,35 +1,31 @@
-import "./CheckoutItem.scss";
+import './CheckoutItem.scss'
 
-import removeButtonLogo from "../../assets/remove-button.svg";
-import plusButtonLogo from "../../assets/plus-sign.svg";
-import minusButtonLogo from "../../assets/minus-sign.svg";
+import removeButtonLogo from '../../assets/remove-button.svg'
+import plusButtonLogo from '../../assets/plus-sign.svg'
+import minusButtonLogo from '../../assets/minus-sign.svg'
 
-import {
-  clearItemFromCart,
-  removeItem,
-  addItemToCart,
-} from "../../redux/cart/cartSlice";
-import { useDispatch } from "react-redux";
+import { clearItemFromCart, removeItem, addItemToCart } from '../../redux/cart/cartSlice'
+import { useDispatch } from 'react-redux'
 
-const CheckoutItem = ({ cartItem }) => {
-  const { name, price, quantity, imageUrl } = cartItem;
+const CheckoutItem = ({cartItem}) => {
+  const {name, price, quantity, imageUrl} = cartItem
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const handleClearFromCart = () => {
-    dispatch(clearItemFromCart({ id: cartItem.id }));
-  };
+  const handleClearFromCart = ()=>{
+    dispatch(clearItemFromCart({id: cartItem.id}))
+  }
 
   const handleRemoveItem = () => {
-    dispatch(removeItem({ id: cartItem.id }));
-  };
+    dispatch(removeItem({id: cartItem.id}))
+  }
 
   const handleAddItem = () => {
-    dispatch(addItemToCart({ id: cartItem.id }));
-  };
+    dispatch(addItemToCart({id: cartItem.id}))
+  }
 
   return (
-    <div className="checkout-item">
+    <div className='checkout-item'>
       <div className="image-container">
         <img src={imageUrl} alt="item" />
       </div>
@@ -42,13 +38,13 @@ const CheckoutItem = ({ cartItem }) => {
         <div className="minus-plus-button" onClick={handleAddItem}>
           <img src={plusButtonLogo} alt="plus sign" />
         </div>
-      </span>
+        </span>
       <span className="price">${price}</span>
       <div className="remove-button" onClick={handleClearFromCart}>
         <img src={removeButtonLogo} alt="remove button" />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CheckoutItem;
+export default CheckoutItem
