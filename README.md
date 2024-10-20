@@ -14,7 +14,7 @@
 
 ## Technologies Used
 
-- **Frontend**: React, Vite, HTML, CSS
+- **Frontend**: React, redux, Vite, HTML, CSS
 - **Backend**: Firebase (Firestore, Authentication)
 - **Other**: JavaScript
 
