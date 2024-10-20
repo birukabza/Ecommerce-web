@@ -1,4 +1,3 @@
-import useState from 'react'
 import SHOP_DATA from "../../data/collections";
 import PreviewCollection from '../../Components/preview-collection/PreviewCollection'
 
@@ -10,7 +9,7 @@ const ShopPage = () => {
     <div className='shop-page'>
       {
         collections.map(({id, ...otherDatas} )=> (
-          <PreviewCollection key={id} {...otherDatas} />
+          <PreviewCollection key={id} length = {4}{...otherDatas} />
         ))
       }
     </div>

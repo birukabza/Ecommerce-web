@@ -1,31 +1,36 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import HomePage from "../pages/homepage/HomePage"
-import Layout from "../Components/layout/Layout"
-import ShopPage from "../pages/shop/ShopPage"
-import SignInSignUpPage from "../pages/sign-in-sign-up-page/SignInSignUpPage"
+import HomePage from "../pages/homepage/HomePage";
+import Layout from "../Components/layout/Layout";
+import ShopPage from "../pages/shop/ShopPage";
+import SignInSignUpPage from "../pages/sign-in-sign-up-page/SignInSignUpPage";
 import Checkout from '../pages/checkout/Checkout';
+import IndividualShopPage from '../pages/individual-shop-pages/IndividualShopPage';
 
 const createRouter = (currentUser) =>
   createBrowserRouter([
     {
       path: '/',
-      element: <Layout/>,  
+      element: <Layout />,
       children: [
         {
           path: '/',
           element: <HomePage />,
         },
         {
-          path: '/shop',
+          path: 'shop',
           element: <ShopPage />,
         },
         {
-          path: '/signin',
-           element:  currentUser ? <Navigate to="/"/> : <SignInSignUpPage />,
+          path: 'shop/:id',
+          element: <IndividualShopPage />,
         },
         {
-          path: '/checkout',
-          element: <Checkout/>
+          path: 'signin',
+          element: currentUser ? <Navigate to="/" /> : <SignInSignUpPage />,
+        },
+        {
+          path: 'checkout',
+          element: <Checkout />,
         },
       ],
     },
