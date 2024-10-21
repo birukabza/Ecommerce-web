@@ -7,6 +7,7 @@ import minusButtonLogo from '../../assets/minus-sign.svg'
 import { clearItemFromCart, removeItem, addItemToCart } from '../../redux/cart/cartSlice'
 import { useDispatch } from 'react-redux'
 
+
 const CheckoutItem = ({cartItem}) => {
   const {name, price, quantity, imageUrl} = cartItem
 
@@ -43,6 +44,7 @@ const CheckoutItem = ({cartItem}) => {
       <div className="remove-button" onClick={handleClearFromCart}>
         <img src={removeButtonLogo} alt="remove button" />
       </div>
+
     </div>
   )
 }
