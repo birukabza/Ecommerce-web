@@ -12,7 +12,7 @@ http {
     keepalive_timeout 65;
 
     server {
-        listen       <%= ENV["PORT"] %>;
+        listen <%= ENV["PORT"] %>;
         server_name  localhost;
 
         root /app/dist;
