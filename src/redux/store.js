@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./user/userSlice";
 import cartReducer from "./cart/cartSlice";
+import shopDataReducer from './shopData/shopDataSlice'
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "@reduxjs/toolkit";
@@ -13,6 +14,7 @@ const persistConfig = {
 const rootReducer = {
   user: userReducer,
   cart: cartReducer,
+  shop: shopDataReducer,
 };
 
 const persistedReducer = persistReducer(
@@ -20,13 +22,10 @@ const persistedReducer = persistReducer(
   combineReducers(rootReducer)
 );
 
-const middlewares = [];
+const middlewares = []
 
-if (process.env.NODE_ENV !== "production") {
-  import("redux-logger").then((loggerModule) => {
-    const logger = loggerModule.default;
-    middlewares.push(logger);
-  });
+if (import.meta.env.MODE !== "production") {
+  middlewares.push((await import("redux-logger")).default)
 }
 
 const store = configureStore({

@@ -1,10 +1,18 @@
 import { useParams } from "react-router-dom";
-import SHOP_DATA from "../../data/collections";
 import PreviewCollection from "../../Components/preview-collection/PreviewCollection";
+import { useSelector, useDispatch } from "react-redux";
+import fetchShopData from "../../firebase/fetchShopData";
+import { useEffect } from "react";
+import { selectShopData } from "../../redux/shopData/shopDataSelector";
 
 const IndividualShopPage = () => {
     const { id } = useParams();
-    const collections = SHOP_DATA;
+    const dispatch = useDispatch()
+    const collections = useSelector(selectShopData)
+
+    useEffect(()=>{
+        fetchShopData(dispatch)
+    },[dispatch])
 
     const selectedCollection = collections.find(
         (category) => category.routeName === id

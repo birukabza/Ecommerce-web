@@ -60,7 +60,11 @@ function App() {
 
   const router = createRouter(currentUser);
 
-  return <RouterProvider router={router} />;
+
+  return (
+    <div className="app">
+          <RouterProvider router={router} />
+    </div>)
 }
 
 export default App;
