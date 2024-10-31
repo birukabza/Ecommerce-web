@@ -12,3 +12,5 @@ export const selectShopData = createSelector(
         }))
     )
 )
+
+export const selectIsLoading = (state) => state.shop.isLoading;

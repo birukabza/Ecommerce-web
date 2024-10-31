@@ -37,7 +37,7 @@ const Header = () => {
 
     return (
         <div className="header">
-            <Link className="logo-container" to="./">
+            <Link className="logo-container" to="/">
                 <LogoSvg className="logo" width="150px" height="110px"/>
             </Link>
             <div className="options">

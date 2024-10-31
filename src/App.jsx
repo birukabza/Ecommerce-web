@@ -21,6 +21,10 @@ import { createUserProfileDocument } from "./firebase/firebase.utility";
 import { onAuthStateChanged } from "firebase/auth";
 import { onSnapshot } from "firebase/firestore";
 
+// Mantine UI
+import { MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
+
 function App() {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser)
@@ -36,7 +40,7 @@ function App() {
           // Convert createdAt date to a serializable format (if it's still a Date object) for redux
           if (userData.createdAt) {
 
-              userData.createdAt = userData.createdAt.toDate().toISOString()
+            userData.createdAt = userData.createdAt.toDate().toISOString()
           }
           dispatch(
             setCurrentUser({
@@ -62,9 +66,12 @@ function App() {
 
 
   return (
-    <div className="app">
-          <RouterProvider router={router} />
-    </div>)
+    <MantineProvider>
+      <div className="app">
+        <RouterProvider router={router} />
+      </div>
+    </MantineProvider>
+    )
 }
 
 export default App;
