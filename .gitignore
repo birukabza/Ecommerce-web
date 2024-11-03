@@ -1,1 +1,51 @@
+# Node.js
 node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+/dist
+/build
+/.env.local
+/.env.*.local
+.env
+# Logs
+logs
+*.log
+logs/
+*.log.*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Runtime data
+/tmp
+/out
+*.tsbuildinfo
+
+# IDE and Editor Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# OS Specific Files
+*.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Testing
+/coverage
+/.nyc_output
+
+# Miscellaneous
+*.tgz
+*.zip
+*.bak

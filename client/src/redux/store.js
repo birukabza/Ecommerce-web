@@ -22,11 +22,16 @@ const persistedReducer = persistReducer(
   combineReducers(rootReducer)
 );
 
-const middlewares = []
+const middlewares = [];
 
-if (import.meta.env.MODE !== "production") {
-  middlewares.push((await import("redux-logger")).default)
-}
+(async () => {
+  if (import.meta.env.MODE !== "production") {
+    middlewares.push((await import("redux-logger")).default)
+  }
+})();
+
+
+
 
 const store = configureStore({
   reducer: persistedReducer,
