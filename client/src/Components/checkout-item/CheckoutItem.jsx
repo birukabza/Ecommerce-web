@@ -8,6 +8,7 @@ import { clearItemFromCart, removeItem, addItemToCart } from '../../redux/cart/c
 import { useDispatch } from 'react-redux'
 
 
+
 const CheckoutItem = ({cartItem}) => {
   const {name, price, quantity, imageUrl} = cartItem
 

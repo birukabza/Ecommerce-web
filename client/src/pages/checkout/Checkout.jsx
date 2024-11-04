@@ -5,14 +5,24 @@ import { selectCartItems, selectCartTotalPrice } from "../../redux/cart/cartSele
 import { useSelector } from "react-redux";
 
 import CheckoutItem from "../../Components/checkout-item/CheckoutItem";
+import Payment from "../../Components/payment/Payment";
+import CustomButton from "../../Components/custom-button/CustomButton";
 
-import StripeButton from "../../Components/stripe-button/StripeButton";
+import { useState } from "react";
+
+import Modal from "react-modal";
+
+
 
 
 const Checkout = () => {
 
     const cartItems = useSelector(selectCartItems)
     const cartTotalPrice = useSelector(selectCartTotalPrice)
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const openModal = () => setIsModalOpen(true)
+    const closeModal = () => setIsModalOpen(false)
 
     return (
         <div className="checkout-page">
@@ -50,10 +60,23 @@ const Checkout = () => {
                 exp.date: any future date
                 <br />
                 CVC: any three digit number
-
             </div>
 
-            <StripeButton price={cartTotalPrice}/>
+            <CustomButton onClick = {openModal}>
+                Proceed To Payment
+            </CustomButton>
+
+            <Modal
+                isOpen={isModalOpen}
+                onRequestClose={closeModal}
+                contentLabel="Payment Modal"
+                className="payment-modal"
+                overlayClassName="payment-modal-overlay"
+            >
+                <h2>Payment</h2>
+                <button onClick={closeModal} className="close-button">&times;</button>
+                <Payment /> 
+            </Modal>
 
         </div>
     )
