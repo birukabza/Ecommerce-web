@@ -24,6 +24,7 @@ const CheckoutForm = () => {
         setMessage("");
         const { error } = await stripe.confirmPayment({
             elements,
+            redirect: "if_required",
         });
 
         if (error) {
@@ -45,7 +46,7 @@ const CheckoutForm = () => {
         <form onSubmit={handleSubmit} className="checkout-form">
             <PaymentElement/>
             {message && <p className="message">{message}</p>}
-            <CustomBotton type="Submit" disabled={isProcessing || !stripe || !isProcessing} >
+            <CustomBotton type="Submit" disabled={isProcessing || !stripe || !elements} >
                 {isProcessing ? "Processing ... " : "Pay now"}
             </CustomBotton>      
         </form>

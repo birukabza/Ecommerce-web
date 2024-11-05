@@ -87,7 +87,6 @@ const Checkout = () => {
                         color: "red",
                         width: "40px", 
                         height: "40px",
-
                     }}
                     aria-label="Close modal"
 
