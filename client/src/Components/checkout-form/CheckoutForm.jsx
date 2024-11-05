@@ -4,6 +4,9 @@ import { useState } from "react";
 
 import CustomBotton from "../custom-button/CustomButton";
 
+import "./CheckoutForm.scss";
+
+
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -31,7 +34,7 @@ const CheckoutForm = () => {
             }
         } else {
             setMessage("Payment successful!"); 
-            alert("yay")
+            alert("Payment Successful")
         }
 
         setIsProcessing(false);
@@ -39,13 +42,12 @@ const CheckoutForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="checkout-form">
             <PaymentElement/>
             {message && <p className="message">{message}</p>}
             <CustomBotton type="Submit" disabled={isProcessing || !stripe || !isProcessing} >
                 {isProcessing ? "Processing ... " : "Pay now"}
-            </CustomBotton>
-            
+            </CustomBotton>      
         </form>
     )
 }

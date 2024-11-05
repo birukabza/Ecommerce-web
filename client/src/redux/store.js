@@ -24,11 +24,11 @@ const persistedReducer = persistReducer(
 
 const middlewares = [];
 
-(async () => {
-  if (import.meta.env.MODE !== "production") {
-    middlewares.push((await import("redux-logger")).default)
-  }
-})();
+
+if (import.meta.env.MODE !== "production") {
+  middlewares.push((await import("redux-logger")).default)
+}
+
 
 
 

@@ -1,6 +1,9 @@
 import "./Checkout.scss";
 
-import { selectCartItems, selectCartTotalPrice } from "../../redux/cart/cartSelectors";
+import {
+    selectCartItems,
+    selectCartTotalPrice,
+} from "../../redux/cart/cartSelectors";
 
 import { useSelector } from "react-redux";
 
@@ -12,17 +15,26 @@ import { useState } from "react";
 
 import Modal from "react-modal";
 
+import { CloseButton } from "@mantine/core";
 
-
+const customStylesForPaymentModal = {
+    content: {
+        top: "50%",
+        left: "50%",
+        right: "auto",
+        bottom: "auto",
+        marginRight: "-50%",
+        transform: "translate(-50%, -50%)",
+    },
+};
 
 const Checkout = () => {
+    const cartItems = useSelector(selectCartItems);
+    const cartTotalPrice = useSelector(selectCartTotalPrice);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const cartItems = useSelector(selectCartItems)
-    const cartTotalPrice = useSelector(selectCartTotalPrice)
-    const [isModalOpen, setIsModalOpen] = useState(false)
-
-    const openModal = () => setIsModalOpen(true)
-    const closeModal = () => setIsModalOpen(false)
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     return (
         <div className="checkout-page">
@@ -32,7 +44,8 @@ const Checkout = () => {
                 </div>
                 <div className="header-block">
                     <span>Description</span>
-                </div><div className="header-block">
+                </div>
+                <div className="header-block">
                     <span>Quantity</span>
                 </div>
                 <div className="header-block">
@@ -41,16 +54,11 @@ const Checkout = () => {
                 <div className="header-block">
                     <span>Remove</span>
                 </div>
-
             </div>
-            {
-                cartItems.map(cartItem=>(
-                    <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
-                ))
-            }
-            <div className="total">
-                Total: ${cartTotalPrice}
-            </div>
+            {cartItems.map((cartItem) => (
+                <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+            ))}
+            <div className="total">Total: ${cartTotalPrice}</div>
 
             <div className="test-warning">
                 <p>Please Use the following for testing</p>
@@ -62,24 +70,32 @@ const Checkout = () => {
                 CVC: any three digit number
             </div>
 
-            <CustomButton onClick = {openModal}>
-                Proceed To Payment
-            </CustomButton>
+            <CustomButton onClick={openModal}>Proceed To Payment</CustomButton>
 
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
                 contentLabel="Payment Modal"
-                className="payment-modal"
-                overlayClassName="payment-modal-overlay"
+                style={customStylesForPaymentModal}
             >
-                <h2>Payment</h2>
-                <button onClick={closeModal} className="close-button">&times;</button>
-                <Payment /> 
-            </Modal>
+                <CloseButton
+                    onClick={closeModal}
+                    style={{
+                        position: "absolute",
+                        top: "0px",
+                        right: "0px",
+                        color: "red",
+                        width: "40px", 
+                        height: "40px",
 
+                    }}
+                    aria-label="Close modal"
+
+                />
+                <Payment />
+            </Modal>
         </div>
-    )
-}
+    );
+};
 
 export default Checkout;
