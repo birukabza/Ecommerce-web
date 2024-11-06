@@ -2,14 +2,14 @@ import express from "express";
 import compression from "compression";
 import cors from "cors";
 import bodyParser from "body-parser";
-import path from "path";
+// import path from "path";
 import helmet from "helmet";
 import Stripe from "stripe";
 import dotenv from "dotenv";
-import { fileURLToPath } from 'url';
+// import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 
 dotenv.config()
