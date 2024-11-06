@@ -7,7 +7,6 @@ import CustomBotton from "../custom-button/CustomButton";
 import "./CheckoutForm.scss";
 
 
-
 const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
