@@ -59,20 +59,17 @@ server/
 ## Installation and Setup
 
 1. Clone the repository:
-
-   ```bash
+    ```bash
    git clone git@github.com:birukabza/Ecommerce-web.git
    cd any-store
 
 2. Install dependencies for both the client and server:
-
-    For the client:
     ```bash
+    <!--For the client:-->
     cd client
     npm install
 
     <!--For the server:-->
-    ```bash
     cd server
     npm install
 
@@ -85,9 +82,8 @@ server/
 
 Running the Project
 4. Start the development server:
-
-    For the client:
     ```bash
+    <!--For the client:-->
     cd client
     npm run dev
 
