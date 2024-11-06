@@ -66,33 +66,33 @@ server/
 
 2. Install dependencies for both the client and server:
 
-For the client:
+    For the client:
     ```bash
     cd client
     npm install
 
-For the server:
+    <!--For the server:-->
     ```bash
     cd server
     npm install
 
 
-Configuration
-Create a .env file in the server directory and add your Stripe credentials:
-STRIPE_SECRET_KEY=your-stripe-secret-key
-STRIPE_PUBLISHABLE_KEY=your-stripe-public-key
+3. Configuration
+    Create a .env file in the server directory and add your Stripe credentials:
+    STRIPE_SECRET_KEY=your-stripe-secret-key
+    STRIPE_PUBLISHABLE_KEY=your-stripe-public-key
 
 
 Running the Project
-Start the development server:
+4. Start the development server:
 
-For the client:
+    For the client:
     ```bash
     cd client
     npm run dev
 
-For the server:
-    ```bash
+    <!--For the server:-->
+    
     cd server
     npm start
 
