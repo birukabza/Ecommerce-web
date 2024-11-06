@@ -66,6 +66,9 @@ app.post("/create-payment-intent", async (req, res) => {
 //     })
 // }
 
+app.get("/", (req, res) => {
+  res.send("server is running")
+})
 
 app.listen(port, (error) => {
   if (error) {
