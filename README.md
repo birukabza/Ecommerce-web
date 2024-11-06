@@ -21,40 +21,6 @@ Hosted at [Any Store](https://any-store.onrender.com/)
 - **Cart Management**: Add products to the cart, view the cart, and manage quantities.
 - **Stripe Payment**: Secure payment processing via Stripe.
 
-## Project Structure
-
-client/
-├── dist/                  # Build output
-├── node_modules/          # Frontend dependencies
-├── public/               # Static assets
-├── src/
-│   ├── assets/          # Images and static files
-│   ├── Components/      # Reusable components
-│   ├── data/           # Static data files
-│   ├── firebase/       # Firebase configuration
-│   ├── hooks/          # Custom React hooks
-│   ├── pages/          # Page components
-│   ├── redux/          # Redux store and slices
-│   ├── routes/         # Route definitions
-│   ├── App.jsx         # Main application component
-│   ├── App.scss        # Global styles
-│   └── main.jsx        # Entry point
-├── .env                # Environment variables
-├── .gitignore         # Git ignore rules
-├── eslint.config.js   # ESLint configuration
-├── index.html         # HTML template
-├── package.json       # Frontend dependencies and scripts
-├── package-lock.json  # Dependency lock file
-└── vite.config.js     # Vite configuration
-
-server/
-├── node_modules/      # Backend dependencies
-├── .env              # Backend environment variables
-├── .gitignore        # Backend git ignore rules
-├── package.json      # Backend dependencies and scripts
-├── package-lock.json # Backend dependency lock file
-└── server.js         # Main server file
-
 
 ## Installation and Setup
 
@@ -95,7 +61,6 @@ Running the Project
 
 Deployment
 This project is deployed on Render.com, with both the front-end and back-end hosted separately.
-
 
 Acknowledgements
 Thanks to the developers behind the libraries and tools used in this project!
