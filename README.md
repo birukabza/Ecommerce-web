@@ -55,6 +55,7 @@ server/
 ├── package-lock.json # Backend dependency lock file
 └── server.js         # Main server file
 
+
 ## Installation and Setup
 
 1. Clone the repository:
@@ -62,40 +63,18 @@ server/
    ```bash
    git clone git@github.com:birukabza/Ecommerce-web.git
    cd any-store
-
 
 2. Install dependencies for both the client and server:
 
 For the client:
-cd client
-npm install
+    ```bash
+    cd client
+    npm install
 
 For the server:
-cd server
-npm install
-
-
-Certainly! Here's the continuation and completion of the README.md file based on the setup you've requested:
-
-markdown
-Copy code
-## Installation and Setup
-
-1. Clone the repository:
-
-   ```bash
-   git clone git@github.com:birukabza/Ecommerce-web.git
-   cd any-store
-
-Install dependencies for both the client and server:
-
-For the client:
-cd client
-npm install
-
-For the server:
-cd server
-npm install
+    ```bash
+    cd server
+    npm install
 
 
 Configuration
@@ -108,13 +87,14 @@ Running the Project
 Start the development server:
 
 For the client:
-
-cd client
-npm run dev
+    ```bash
+    cd client
+    npm run dev
 
 For the server:
-cd server
-npm start
+    ```bash
+    cd server
+    npm start
 
 
 Deployment
