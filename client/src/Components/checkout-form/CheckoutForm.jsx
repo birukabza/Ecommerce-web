@@ -6,6 +6,8 @@ import CustomBotton from "../custom-button/CustomButton";
 
 import "./CheckoutForm.scss";
 
+import Swal from "sweetalert2";
+
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -34,7 +36,13 @@ const CheckoutForm = () => {
             }
         } else {
             setMessage("Payment successful!"); 
-            alert("Payment Successful")
+            Swal.fire({
+                title: "Payment Successful!",
+                text: "Your payment has been processed successfully.",
+                icon: "success",
+                confirmButtonText: "Great!",
+                timer: 3000,
+            });
         }
 
         setIsProcessing(false);
@@ -52,4 +60,5 @@ const CheckoutForm = () => {
     )
 }
 
-export default CheckoutForm
+
+export default CheckoutForm;

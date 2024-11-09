@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCKZnoqeM9zWuAvarAR-AMK2cVFnRredno",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "any-store-d5aae.firebaseapp.com",
     projectId: "any-store-d5aae",
     storageBucket: "any-store-d5aae.appspot.com",
