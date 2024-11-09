@@ -5,6 +5,8 @@ import CustomButton from '../custom-button/CustomButton'
 import { useDispatch } from 'react-redux'
 import { addItemToCart } from '../../redux/cart/cartSlice'
 
+import Swal from "sweetalert2";
+
 
 const CollectionItem = ({ id, name, price, imageUrl }) => {
     const styles = {
@@ -15,6 +17,16 @@ const CollectionItem = ({ id, name, price, imageUrl }) => {
 
     const handleAddToCart = () => {
         dispatch(addItemToCart({id, name, price, imageUrl}))
+        Swal.fire({
+            title: 'Added to Cart!',
+            text: `${name} has been added to your cart.`,
+            icon: 'success',
+            confirmButtonText: 'OK',
+            timer: 1500,
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false
+        })
     }
 
     return (

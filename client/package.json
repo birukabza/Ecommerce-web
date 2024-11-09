@@ -27,7 +27,8 @@
     "react-router-dom": "^6.26.2",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
-    "reselect": "^5.1.1"
+    "reselect": "^5.1.1",
+    "sweetalert2": "^11.6.13"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
