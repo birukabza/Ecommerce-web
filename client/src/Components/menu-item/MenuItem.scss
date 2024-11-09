@@ -31,9 +31,6 @@
     background: no-repeat center/cover;
   }
 
-  &.large {
-    height: 23.75rem; 
-  }
 
   &:first-child {
     margin-right: 0.46875rem; 
@@ -41,6 +38,15 @@
 
   &:last-child {
     margin-left: 0.46875rem; 
+  }
+
+  @media screen and (max-width: 800px){
+   height: 200px; 
+   width: 20%;
+   margin-top: 20px;
+  }
+  @media screen and (max-width: 500px){
+    width: 50%;
   }
 
   .content {

@@ -10,6 +10,9 @@
 body{
     padding: 20px 60px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    @media screen and (max-width: 800px){
+        padding: 10px;   
+    }
 }
 
 a{

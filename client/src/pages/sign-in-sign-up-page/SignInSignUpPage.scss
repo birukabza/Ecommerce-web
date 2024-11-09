@@ -3,4 +3,19 @@
     display: flex;
     justify-content: space-between;
     margin: 10px auto;
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+        width: unset;
+        align-items: center;
+    
+        &:first-child {
+          margin-bottom: 50px;
+        }
+        margin-top: 50px;
+        width: 100vw;
+        .custom-button{
+            min-width: unset;
+            font-size: 10px;
+        }
+      }
 }
