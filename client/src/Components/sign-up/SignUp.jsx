@@ -8,6 +8,8 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 import { useState } from 'react'
 
+import Swal from "sweetalert2";
+
 const SignUp = () => {
 
     const [userInfo, setUserInfo] = useState({
@@ -22,7 +24,25 @@ const SignUp = () => {
         const { displayName, email, password, confirmPassword } = userInfo
 
         if (password !== confirmPassword) {
-            alert("Password don't match")
+            
+                Swal.fire({
+                    title: 'Error!',
+                    text: "Passwords don't match",
+                    icon: 'error',
+                    confirmButtonText: 'Okay',
+                })
+            return
+        }
+        const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+        if (!passwordPattern.test(password)) {
+            Swal.fire({
+                title: 'Error!',
+                text: "Password must be at least 6 characters long and contain both letters and numbers.",
+                icon: 'error',
+                confirmButtonText: 'Okay',
+            })
+
             return
         }
 
@@ -36,9 +56,31 @@ const SignUp = () => {
               password: '',
               confirmPassword: '',
             });
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your account has been created successfully.',
+                icon: 'success',
+                confirmButtonText: 'Okay',
+            })
 
         }catch(error){
-            console.log("Error signing up", error.message)   
+            console.log("Error signing up", error.message)
+            let errorMessage = 'Something went wrong. Please try again.'
+
+            if (error.code === 'auth/email-already-in-use') {
+                errorMessage = 'The email address is already in use.'
+            } else if (error.code === 'auth/invalid-email') {
+                errorMessage = 'The email address is not valid. Please enter a valid email.'
+            } else if (error.code === 'auth/weak-password') {
+                errorMessage = 'The password is too weak.'
+            }
+
+            Swal.fire({
+                title: 'Error!',
+                text: errorMessage,
+                icon: 'error',
+                confirmButtonText: 'Okay',
+            })    
         }
 
     }
