@@ -6,4 +6,15 @@
   .title {
     margin: 10px 0;
   }
+  .password-field{
+    position: relative;
+
+    .toggle-password{
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      right: 0;
+    }
+  }
+
 }

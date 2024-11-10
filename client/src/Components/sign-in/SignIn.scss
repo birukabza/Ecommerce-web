@@ -11,4 +11,14 @@
         justify-content: space-between;
         gap: 20px;
     }
+    .password-field{
+        position: relative;
+    
+        .toggle-password{
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          right: 0;
+        }
+      }
 }

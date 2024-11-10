@@ -10,6 +10,9 @@ import { useState } from 'react'
 
 import Swal from "sweetalert2";
 
+import  OpenEyeLogo  from "../../assets/eye-opened.svg";
+import  ClosedEyeLogo  from "../../assets/eye-closed.svg";
+
 const SignUp = () => {
 
     const [userInfo, setUserInfo] = useState({
@@ -19,18 +22,24 @@ const SignUp = () => {
         confirmPassword: ""
     })
 
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword)
+    }
+
     async function handleSubmit(e) {
         e.preventDefault()
         const { displayName, email, password, confirmPassword } = userInfo
 
         if (password !== confirmPassword) {
-            
-                Swal.fire({
-                    title: 'Error!',
-                    text: "Passwords don't match",
-                    icon: 'error',
-                    confirmButtonText: 'Okay',
-                })
+
+            Swal.fire({
+                title: 'Error!',
+                text: "Passwords don't match",
+                icon: 'error',
+                confirmButtonText: 'Okay',
+            })
             return
         }
         const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
@@ -46,15 +55,15 @@ const SignUp = () => {
             return
         }
 
-        try{
-            const {user} = await createUserWithEmailAndPassword(auth, email, password)
+        try {
+            const { user } = await createUserWithEmailAndPassword(auth, email, password)
             await createUserProfileDocument(user, { displayName });
 
             setUserInfo({
-              displayName: '',
-              email: '',
-              password: '',
-              confirmPassword: '',
+                displayName: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
             });
             Swal.fire({
                 title: 'Success!',
@@ -64,7 +73,7 @@ const SignUp = () => {
                 timer: 2000,
             })
 
-        }catch(error){
+        } catch (error) {
             console.log("Error signing up", error.message)
             let errorMessage = 'Something went wrong. Please try again.'
 
@@ -81,13 +90,13 @@ const SignUp = () => {
                 text: errorMessage,
                 icon: 'error',
                 confirmButtonText: 'Okay',
-            })    
+            })
         }
 
     }
 
-    function handleChange (e){
-        const {name, value} = e.target
+    function handleChange(e) {
+        const { name, value } = e.target
 
         setUserInfo(prevUserInfo => (
             {
@@ -118,22 +127,40 @@ const SignUp = () => {
                     name="email"
                     required
                 />
-                <FormInput
-                    type="password"
-                    label="Password"
-                    onChange={handleChange}
-                    value={userInfo.password}
-                    name="password"
-                    required
-                />
-                <FormInput
-                    type="password"
-                    label="Confirm Password"
-                    onChange={handleChange}
-                    value={userInfo.confirmPassword}
-                    name="confirmPassword"
-                    required
-                />
+                <div className="password-field">
+                    <FormInput
+                        type={showPassword ? "text" : "password"}
+                        label="Password"
+                        onChange={handleChange}
+                        value={userInfo.password}
+                        name="password"
+                        required
+                    />
+                    <span onClick={togglePasswordVisibility} className="toggle-password">
+                        {showPassword ?
+                            <img src={OpenEyeLogo} alt="close eye logo" />
+                            :
+                            <img src={ClosedEyeLogo} alt="open eye logo" />
+                        }
+                    </span>
+                </div>
+                <div className="password-field">
+                    <FormInput
+                        type={showPassword ? "text" : "password"}
+                        label="Confirm Password"
+                        onChange={handleChange}
+                        value={userInfo.confirmPassword}
+                        name="confirmPassword"
+                        required
+                    />
+                    <span onClick={togglePasswordVisibility} className="toggle-password">
+                        {showPassword ?
+                            <img src={OpenEyeLogo} alt="close eye logo" />
+                            :
+                            <img src={ClosedEyeLogo} alt="open eye logo" />
+                        }
+                    </span>
+                </div>
                 <CustomButton type="submit"> Sign Up</CustomButton>
             </form>
         </div>

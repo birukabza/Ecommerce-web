@@ -6,11 +6,20 @@ import { SignInWithGoogle, auth } from "../../firebase/firebase.utility";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Swal from "sweetalert2";
 
+import  OpenEyeLogo  from "../../assets/eye-opened.svg";
+import  ClosedEyeLogo  from "../../assets/eye-closed.svg";
+
 const SignIn = () => {
     const [userInfo, setUserInfo] = useState({
         email: "",
         password: "",
     });
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword)
+    }
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -40,8 +49,8 @@ const SignIn = () => {
 
             if (error.code === "auth/user-not-found") {
                 errorMessage = "No account found with this email address.";
-            } else if (error.code === "auth/wrong-password") {
-                errorMessage = "The password you entered is incorrect.";
+            } else if (error.code === "auth/invalid-credential") {
+                errorMessage = "Invalid credentials. Please check your details and try again.";
             } else if (error.code === "auth/invalid-email") {
                 errorMessage = "The email address is not valid.";
             }
@@ -90,14 +99,24 @@ const SignIn = () => {
                     label="Email"
                     required
                 />
+                <div className="password-field">
+
                 <FormInput
-                    type="password"
+                    type={showPassword ? "text": "password"}
                     value={userInfo.password}
                     name="password"
                     onChange={handleChange}
                     label="Password"
                     required
                 />
+                <span onClick={togglePasswordVisibility} className="toggle-password">
+                        {showPassword ?
+                            <img src={OpenEyeLogo} alt="close eye logo" />
+                            :
+                            <img src={ClosedEyeLogo} alt="open eye logo" />
+                        }
+                </span>
+                </div>
                 <div className="buttons">
                 <CustomButton type="Submit">Sign In</CustomButton>
                 <CustomButton onClick={handleGoogleSignIn} isGoogleSignIn>
