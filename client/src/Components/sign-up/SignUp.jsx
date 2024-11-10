@@ -61,6 +61,7 @@ const SignUp = () => {
                 text: 'Your account has been created successfully.',
                 icon: 'success',
                 confirmButtonText: 'Okay',
+                timer: 2000,
             })
 
         }catch(error){
