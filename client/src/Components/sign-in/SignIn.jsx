@@ -9,6 +9,8 @@ import Swal from "sweetalert2";
 import  OpenEyeLogo  from "../../assets/eye-opened.svg";
 import  ClosedEyeLogo  from "../../assets/eye-closed.svg";
 
+import { useNavigate, useLocation } from "react-router-dom";
+
 const SignIn = () => {
     const [userInfo, setUserInfo] = useState({
         email: "",
@@ -16,6 +18,9 @@ const SignIn = () => {
     });
 
     const [showPassword, setShowPassword] = useState(false);
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword)
@@ -43,6 +48,8 @@ const SignIn = () => {
                     confirmButtonText: "Okay",
                     timer: 2000,
                 });
+            const redirectPath = location.state?.from || "/";
+            navigate(redirectPath)
         }catch(error){
             console.log("Error while Signing up", error.message)
             let errorMessage = "Something went wrong. Please try again.";
@@ -75,6 +82,8 @@ const SignIn = () => {
                 confirmButtonText: "Okay",
                 timer: 2000,
             });
+            const redirectPath = location.state?.from || "/";
+            navigate(redirectPath)
         }).catch((error)=>{
             Swal.fire({
                 title: "Error!",

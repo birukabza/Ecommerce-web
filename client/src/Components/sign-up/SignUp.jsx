@@ -13,6 +13,8 @@ import Swal from "sweetalert2";
 import  OpenEyeLogo  from "../../assets/eye-opened.svg";
 import  ClosedEyeLogo  from "../../assets/eye-closed.svg";
 
+import { useNavigate, useLocation } from 'react-router-dom';
+
 const SignUp = () => {
 
     const [userInfo, setUserInfo] = useState({
@@ -23,6 +25,10 @@ const SignUp = () => {
     })
 
     const [showPassword, setShowPassword] = useState(false);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword)
@@ -72,6 +78,8 @@ const SignUp = () => {
                 confirmButtonText: 'Okay',
                 timer: 2000,
             })
+            const redirectPath = location.state?.from || "/";
+            navigate(redirectPath)
 
         } catch (error) {
             console.log("Error signing up", error.message)
