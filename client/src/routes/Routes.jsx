@@ -1,10 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
-import HomePage from "../pages/homepage/HomePage";
 import Layout from "../Components/layout/Layout";
-import ShopPage from "../pages/shop/ShopPage";
-import SignInSignUpPage from "../pages/sign-in-sign-up-page/SignInSignUpPage";
-import Checkout from '../pages/checkout/Checkout';
-import IndividualShopPage from '../pages/individual-shop-pages/IndividualShopPage';
+import { lazy, Suspense } from 'react';
+import { Loader } from "@mantine/core";
+
+
+const HomePage = lazy(() => import("../pages/homepage/HomePage"));
+const ShopPage = lazy(() => import("../pages/shop/ShopPage"));
+const SignInSignUpPage = lazy(() => import("../pages/sign-in-sign-up-page/SignInSignUpPage"));
+const Checkout = lazy(() => import('../pages/checkout/Checkout'));
+const IndividualShopPage = lazy(() => import('../pages/individual-shop-pages/IndividualShopPage'));
 
 const createRouter = () =>
   createBrowserRouter([
@@ -14,23 +18,45 @@ const createRouter = () =>
       children: [
         {
           path: '/',
-          element: <HomePage />,
+          element: (
+            <Suspense fallback={<Loader size={100} color="blue" variant="dots" />
+          }>
+              <HomePage />
+            </Suspense>
+          ),
         },
         {
           path: 'shop',
-          element: <ShopPage />,
+          element: (
+            <Suspense fallback={<Loader size={100} color="blue" variant="dots" />
+          }>
+              <ShopPage />
+            </Suspense>
+          ),
         },
         {
           path: 'shop/:id',
-          element: <IndividualShopPage />,
+          element: (
+            <Suspense fallback={<Loader size={100} color="blue" variant="dots" />}>
+              <IndividualShopPage />
+            </Suspense>
+          ),
         },
         {
           path: 'signin',
-          element: <SignInSignUpPage />,
+          element: (
+            <Suspense fallback={<Loader size={100} color="blue" variant="dots" />}>
+              <SignInSignUpPage />
+            </Suspense>
+          ),
         },
         {
           path: 'checkout',
-          element: <Checkout />,
+          element: (
+            <Suspense fallback={<Loader size={100} color="blue" variant="dots" />}>
+              <Checkout />
+            </Suspense>
+          ),
         },
       ],
     },
