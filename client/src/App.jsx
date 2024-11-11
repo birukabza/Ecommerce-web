@@ -1,6 +1,4 @@
 import { RouterProvider } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectCurrentUser } from "./redux/user/userSelector";
 import "./App.scss";
 import createRouter from "./routes/Routes";
 import { MantineProvider } from '@mantine/core';
@@ -13,8 +11,7 @@ Modal.setAppElement('#root');
 
 function App() {
   useAuthListener(); 
-  const currentUser = useSelector(selectCurrentUser);
-  const router = createRouter(currentUser);
+  const router = createRouter();
 
   return (
     <MantineProvider>

@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import HomePage from "../pages/homepage/HomePage";
 import Layout from "../Components/layout/Layout";
 import ShopPage from "../pages/shop/ShopPage";
@@ -6,7 +6,7 @@ import SignInSignUpPage from "../pages/sign-in-sign-up-page/SignInSignUpPage";
 import Checkout from '../pages/checkout/Checkout';
 import IndividualShopPage from '../pages/individual-shop-pages/IndividualShopPage';
 
-const createRouter = (currentUser) =>
+const createRouter = () =>
   createBrowserRouter([
     {
       path: '/',
@@ -26,7 +26,7 @@ const createRouter = (currentUser) =>
         },
         {
           path: 'signin',
-          element: currentUser ? <Navigate to="/" /> : <SignInSignUpPage />,
+          element: <SignInSignUpPage />,
         },
         {
           path: 'checkout',
