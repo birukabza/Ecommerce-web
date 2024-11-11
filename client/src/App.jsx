@@ -5,6 +5,8 @@ import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import useAuthListener from "./hooks/useAuthListener";  
 import Modal from 'react-modal';
+import { Suspense } from "react";
+import { Loader } from "@mantine/core";
 
 Modal.setAppElement('#root');
 
@@ -16,7 +18,9 @@ function App() {
   return (
     <MantineProvider>
       <div className="app">
-        <RouterProvider router={router} />
+        <Suspense fallback={<Loader size={100} color="blue" variant="dots" />}>
+         <RouterProvider router={router} />
+        </Suspense>
       </div>
     </MantineProvider>
   );

@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from "../Components/layout/Layout";
-import { lazy, Suspense } from 'react';
-import { Loader } from "@mantine/core";
+import { lazy } from 'react';
 
 
 const HomePage = lazy(() => import("../pages/homepage/HomePage"));
@@ -18,45 +17,24 @@ const createRouter = () =>
       children: [
         {
           path: '/',
-          element: (
-            <Suspense fallback={<Loader size={100} color="blue" variant="dots" />
-          }>
-              <HomePage />
-            </Suspense>
-          ),
+          element: <HomePage />,
         },
         {
           path: 'shop',
-          element: (
-            <Suspense fallback={<Loader size={100} color="blue" variant="dots" />
-          }>
-              <ShopPage />
-            </Suspense>
-          ),
+          element: <ShopPage />,
         },
         {
           path: 'shop/:id',
-          element: (
-            <Suspense fallback={<Loader size={100} color="blue" variant="dots" />}>
-              <IndividualShopPage />
-            </Suspense>
-          ),
+          element: <IndividualShopPage />,
+
         },
         {
           path: 'signin',
-          element: (
-            <Suspense fallback={<Loader size={100} color="blue" variant="dots" />}>
-              <SignInSignUpPage />
-            </Suspense>
-          ),
+          element: <SignInSignUpPage />,
         },
         {
           path: 'checkout',
-          element: (
-            <Suspense fallback={<Loader size={100} color="blue" variant="dots" />}>
-              <Checkout />
-            </Suspense>
-          ),
+          element: <Checkout />,
         },
       ],
     },
