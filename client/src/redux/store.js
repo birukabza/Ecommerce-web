@@ -31,8 +31,6 @@ if (import.meta.env.MODE !== "production") {
 
 
 
-
-
 const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
