@@ -8,6 +8,7 @@ const ShopPage = lazy(() => import("../pages/shop/ShopPage"));
 const SignInSignUpPage = lazy(() => import("../pages/sign-in-sign-up-page/SignInSignUpPage"));
 const Checkout = lazy(() => import('../pages/checkout/Checkout'));
 const IndividualShopPage = lazy(() => import('../pages/individual-shop-pages/IndividualShopPage'));
+const Contact = lazy(()=> import("../pages/contact/Contanct"));
 
 const createRouter = () =>
   createBrowserRouter([
@@ -35,6 +36,10 @@ const createRouter = () =>
         {
           path: 'checkout',
           element: <Checkout />,
+        },
+        {
+          path: 'contact',
+          element: <Contact/>,
         },
       ],
     },

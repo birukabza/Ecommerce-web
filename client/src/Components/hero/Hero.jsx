@@ -13,11 +13,14 @@ const Hero = () => {
     
     return (
         <div className='hero-section'>
-            <div  className="hero-img-container">
+            <div  className="hero-container">
+                <div className="logo-container">
+                <Link to="/">
+                    <LogoSvg  width="350px" height="290px"/>
+                </Link>
+                </div>
                 <div className="banner">
-                    <Link to="/">
-                    <LogoSvg width="350px" height="300px"/>
-                    </Link>
+                    
                     <h2>Unleash Your Style</h2>
                     <h1>Discover the Latest Trends at Any Store</h1>
                     <Link to="/shop"> <CustomButton> Shop Now </CustomButton> </Link>
