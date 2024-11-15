@@ -53,7 +53,6 @@ const Header = () => {
                 <CartIcon handleClick={toggleCartDropdown}/>
             </div>
             { showCart && <CartDropdown/> }
-
         </div>
     );
 };
