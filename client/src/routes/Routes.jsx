@@ -40,7 +40,7 @@ const createRouter = () =>
           element: <Checkout />,
         },
         {
-          path: 'cotact',
+          path: 'contact',
           element: <Contact/>,
         },
         {

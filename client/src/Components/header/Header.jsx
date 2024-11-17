@@ -7,7 +7,7 @@ import { auth } from '../../firebase/firebase.utility';
 
 import LogoSvg from '../../assets/LogoSvg';
 
-import { Link } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {clearCurrentUser} from '../../redux/user/userSlice'
@@ -37,20 +37,23 @@ const Header = () => {
 
     return (
         <div className="header">
-            <Link className="logo-container" to="/">
-                <LogoSvg className="logo" width="150px" height="110px"/>
-            </Link>
+            <NavLink className="logo-container" to="/">
+                <LogoSvg className="logo" width="100px" height="90px"/>
+            </NavLink>
             <div className="options">
-                <Link className="option" to="/shop">Shop</Link>
-                <Link className="option" to="/contact">Contact</Link>
+                <NavLink className="option" to="/shop">Shop</NavLink>
+                <NavLink className="option" to="/contact">Contact</NavLink>
                 {currentUser ? (
                     <div className="option" onClick={handleSignOut}>
                         Sign Out
                     </div>
                 ) : (
-                    <Link className="option" to="./signin">Sign In</Link>
+                    <NavLink className="option" to="./signin">Sign In</NavLink>
                 )}
-                <CartIcon handleClick={toggleCartDropdown}/>
+                <div className="cart-icon-conatainer option">
+
+                <CartIcon  handleClick={toggleCartDropdown}/>
+                </div>
             </div>
             { showCart && <CartDropdown/> }
         </div>

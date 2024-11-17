@@ -9,8 +9,7 @@ const Contact = () => {
 
   const styles = {
     margin: location.pathname !== "/contact" ? "":"13rem auto",
-    width: location.pathname !== "/contact" ? "":"90vw",
-    
+    width: location.pathname !== "/contact" ? "":"90vw", 
   }
 
   return (

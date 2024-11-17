@@ -1,11 +1,15 @@
 .header {
-  height: 70px;
+  min-height: 70px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 45px;
+  box-shadow: 5px 5px 10px gray;
+  padding-top: 25px;
+  padding-left: 50px;
+  padding-right: 50px;
+
   @media screen and (max-width: 800px){
-    height: 60px;
     padding: 10px;
     margin-bottom: 20px;   
   }
@@ -15,10 +19,14 @@
     max-width: 50%;
     padding: 20px;
     padding-top: 5px;
+    height: 100%;
     @media screen and (max-width: 800px){
       padding: 0;
     }
   }
+  
+
+
 
   .options {
     width: 50%;
@@ -26,15 +34,22 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    font-size: large;
+    gap: 40px;
 
     @media screen and (max-width: 800px){
-     .options{ 
+     
       width: 80%;
-    }
+      gap:20px;
+    
     }
     .option {
       padding: 10px 15px;
       cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      &:hover{
+        transform: scale(1.1);
+      }
     }
   }
 }
