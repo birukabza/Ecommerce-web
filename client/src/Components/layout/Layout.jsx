@@ -1,5 +1,5 @@
 import Header from '../header/Header'
-import Contanct from '../../pages/contact/Contanct'
+import Contanct from '../../pages/contact/Contact'
 
 import { Outlet } from 'react-router-dom'
 
