@@ -2,9 +2,19 @@ import { Flex, Text, TextInput, Textarea, Button } from "@mantine/core";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import "./Contact.scss";
 
+import { useLocation } from "react-router-dom";
+
 const Contact = () => {
+  const location = useLocation();
+
+  const styles = {
+    margin: location.pathname !== "/contact" ? "":"13rem auto",
+    width: location.pathname !== "/contact" ? "":"90vw",
+    
+  }
+
   return (
-    <div className="contact-page" >
+    <div className="contact-page" style={styles}>
       <Flex
         justify="space-between"
         align="center"

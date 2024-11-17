@@ -1,14 +1,16 @@
 import Header from '../header/Header'
-import Contanct from '../../pages/contact/Contact'
+import Contact from '../../pages/contact/Contact'
 
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 
-const Layout = () => (
+const Layout = () => {
+    const location = useLocation();
+    return(
     <>
     <Header /> 
-    <Outlet />  
-    <Contanct/>
+    <Outlet /> 
+    {location.pathname !== "/contact" && <Contact/>} 
     </>
-)
+)}
 
 export default Layout
