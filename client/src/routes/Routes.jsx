@@ -2,6 +2,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from "../Components/layout/Layout";
 import { lazy } from 'react';
 
+import NotFoundPage from '../Components/not-found-page/NotFoundPage';
+
 
 const HomePage = lazy(() => import("../pages/homepage/HomePage"));
 const ShopPage = lazy(() => import("../pages/shop/ShopPage"));
@@ -38,11 +40,17 @@ const createRouter = () =>
           element: <Checkout />,
         },
         {
-          path: 'contact',
+          path: 'cotact',
           element: <Contact/>,
         },
+        {
+          path: '*', 
+          element: <NotFoundPage />,
+        },
       ],
+      
     },
+
   ]);
 
 export default createRouter;
